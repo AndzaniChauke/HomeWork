@@ -4,6 +4,7 @@ import com.example.HomeWork.model.AppUser;
 import com.example.HomeWork.repository.AppUserRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -17,15 +18,11 @@ import org.springframework.stereotype.Service;
 @Component
 public class AppUserService implements UserDetailsService {
     private final static String USER_NOT_FOUND="USER WITH EMAIL %S NOT FOUND";
-
+@Autowired
     private  AppUserRepository appUserRepository;
 
+    @Autowired
     private  BCryptPasswordEncoder bCryptPasswordEncoder;
-
-    public AppUserService(AppUserRepository appUserRepository) {
-        this.appUserRepository=appUserRepository;
-    }
-
 
     @Override
     public UserDetails loadUserByUsername(String email)
