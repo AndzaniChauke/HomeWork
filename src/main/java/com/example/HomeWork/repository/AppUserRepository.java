@@ -15,6 +15,7 @@ import java.util.Optional;
 @Transactional(readOnly = true)
 public interface AppUserRepository extends JpaRepository<AppUser,Long> {
 
+    @Cacheable("foundEmail")
     Optional<AppUser> findByEmail(String email);
 
 
